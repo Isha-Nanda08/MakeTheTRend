@@ -8,7 +8,7 @@ import ShoppingCartOutlined from '@mui/icons-material/ShoppingCartOutlined';
 const Container=styled.div`
 color: #000;
     height: 60px;
-    background-color: #eee2f9;
+    background-color: #e8e2ee62;
     position: sticky;
     top: 0;
     margin:0;

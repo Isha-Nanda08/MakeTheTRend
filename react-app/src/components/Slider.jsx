@@ -68,11 +68,13 @@ const Desc=styled.p`
     font-size: 20px;
     font-weight: 500;
     letter-spacing: 3px;
+`;
+const BUtton=styled.button`
+
 `
-const BUtton=styled.button``
 
 const Slider = () => {
-    const [slideIndex,setSlideIndex]=useState(0);
+    // const [slideIndex,setSlideIndex]=useState(0);
     const handleClick=(direction)=>{
 
     }
@@ -84,7 +86,7 @@ const Slider = () => {
         <Wrapper>
             <Slide bg="f5fafd">
             <ImgContainer>
-                <Image src="https://media.istockphoto.com/id/847731222/photo/happy-running-beautiful-woman-with-many-shopping-bags.jpg?s=612x612&w=0&k=20&c=UF9xH8Nlh8WV6ShYDghaxFXyFUcNQMPgbGOA1m58rRk="/>
+                <Image src="https://watermark.lovepik.com/photo/20211124/large/lovepik-fashion-womens-summer-shopping-image-picture_500961851.jpg"/>
             </ImgContainer>
             <InfoContainer>
                 <Title>SUMMER SALE!!</Title>
@@ -99,7 +101,7 @@ const Slider = () => {
             <InfoContainer>
                 <Title>SUMMER SALE!!</Title>
                 <Desc>GET UPTO 50% OFF ON TOP BRANDS ON T-SHIRTS</Desc>
-                <Button>SHOP NOW</Button>
+                <BUtton>SHOP NOW</BUtton>
             </InfoContainer>
             </Slide>
             <Slide>
