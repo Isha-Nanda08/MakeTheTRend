@@ -5,7 +5,7 @@ const Container=styled.div`
 /* height: 30px;position:sticky; */
     /* top:0; */
     height: 30px;
-    background-color: #cc17a2;
+    background-color: #c66927;
     color: white;
     display: flex;
     align-items: center;
