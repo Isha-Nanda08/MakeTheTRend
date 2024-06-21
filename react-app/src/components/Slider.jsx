@@ -71,9 +71,9 @@ const Desc=styled.p`
     font-weight: 500;
     letter-spacing: 3px;
 `;
-const BUtton=styled.button`
-
-`
+// const Button=styled.button`
+//     border:2px solid #000;
+// `
 
 const Slider = () => {
     const [slideIndex,setSlideIndex]=useState(0);
@@ -93,7 +93,7 @@ const Slider = () => {
         <Wrapper slideIndex={slideIndex} >
             {sliderItems.map((item)=>(
 
-            <Slide bg={item.bg}>
+            <Slide bg={item.bg} key={item.id}>
             <ImgContainer>
                 <Image src={item.img}/>
             </ImgContainer>
