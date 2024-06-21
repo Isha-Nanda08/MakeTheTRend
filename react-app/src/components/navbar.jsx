@@ -10,8 +10,10 @@ color: #000;
     height: 60px;
     background-color: #e8e2ee62;
     position: sticky;
-    top: 0;
     margin:0;
+    /* position: sticky; */
+    top: 30px;
+
 `
 const Wrapper=styled.div`
     padding: 10px 20px;
