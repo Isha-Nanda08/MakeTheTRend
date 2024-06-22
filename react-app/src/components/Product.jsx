@@ -2,7 +2,7 @@ import styled from "styled-components";
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import SearchIcon from '@mui/icons-material/Search';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-
+import { motion } from 'framer-motion';
 const Info = styled.div`
     opacity:0;
     width: 100%;
@@ -20,7 +20,7 @@ const Info = styled.div`
 
 `
 
-const Container =styled.div`
+const Container =styled(motion.div)`
     flex: 1;
     margin: 5px;
     min-height:280px;
@@ -72,7 +72,11 @@ const Icon = styled.div`
 
 const Product = ({item}) => {
   return (
-    <Container>
+    <Container
+     initial={{ opacity: 0, scale: 0.7}}
+    whileInView={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.5 }}
+    viewport={{ once: true, amount: 0.3 }}>
         <Circle/>
         <Image src={item.img}/>
         <Info>

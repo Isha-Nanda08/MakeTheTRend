@@ -10,6 +10,7 @@ import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 
 const Container=styled.div`
     display:flex;
+    
 `
 
 const Left=styled.div`
@@ -31,12 +32,16 @@ const SocialIcon=styled.div`
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    color: white;
+    color: #fff;
     background-color:#${props=>props.color};
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 40px 6px;
+    &:hover{
+        transform: scale(1.2);
+        background-color:#c66927
+    }
 `
 
 
@@ -73,6 +78,10 @@ const List=styled.ul`
 const ListItem=styled.li`
     width: 50%;
     margin-bottom: 10px;
+    cursor: pointer;
+    &:hover{
+        color: #e76203;
+    }
 `
 const Footer = () => {
   return (
@@ -83,13 +92,13 @@ const Footer = () => {
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, nulla distinctio ducimus ipsam aliquam hic ipsum sed culpa voluptatem adipisci.
             </Desc>
             <SocialContainer>
-                <SocialIcon color="385999">
+                <SocialIcon color="eccb50">
                     <FacebookOutlinedIcon/>
                 </SocialIcon>
-                <SocialIcon color="385999">
+                <SocialIcon color="5c2b03">
                     <InstagramIcon/>
                 </SocialIcon>
-                <SocialIcon color="385999">
+                <SocialIcon color="489888">
                     <TwitterIcon/>
                 </SocialIcon >
                 <SocialIcon color="385999">
