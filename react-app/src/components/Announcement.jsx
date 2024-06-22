@@ -38,7 +38,7 @@ const Announcement = () => {
   return (
     <Container>
       <MarqueeText>
-        SUPER DEAL - FREE SHIPPING ON ORDERS ABOVE RS500
+        SUPER DEAL - FREE SHIPPING ON ORDERS ABOVE Rs 500
       </MarqueeText>
     </Container>
   );
