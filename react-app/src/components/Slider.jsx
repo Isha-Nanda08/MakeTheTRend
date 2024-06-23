@@ -3,6 +3,8 @@ import { ArrowBackIosOutlined,ArrowForwardIosOutlined } from '@mui/icons-materia
 import { Button } from "@mui/material";
 import {sliderItems} from "../data";
 import { useState } from "react";
+import {mobile} from "../responsive"
+
 
 const Container=styled.div`
     width: 100%;
@@ -10,6 +12,7 @@ const Container=styled.div`
     display: flex;
     position: relative;
     overflow: hidden;
+    ${mobile({display:"none"})}
 
 `
 const Arrow=styled.div`
