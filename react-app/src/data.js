@@ -28,28 +28,33 @@ export const categories=[
     {
         id:1,
         img:"https://img.freepik.com/free-photo/portrait-happy-lady-sunglasses-standing-with-colorful-shopping-bags-hands-pink-background-young-woman-standing-white-shirt-denim-shorts_574295-1182.jpg",
-        title:"WOMEN"
+        title:"Women",
+        cat:"women"
         },
         {
             id:2,
             img:"https://img.freepik.com/free-photo/happy-man-with-handbags-dancing-after-shopping-spree_482257-18132.jpg",
-            title:"MEN"
+            title:"MEN",
+            cat:"men"
         },
         {
             id:3,
             img:"https://www.webku.in/wp-content/uploads/2021/03/Tips-for-shopping-with-kids-Life-hacks-for-busy-moms.jpg",
-            title:"KIDS"
+            title:"KIDS",
+            cat:"kids"
         },
         {
             id:4,
             img:"https://www.thelifestyle-files.com/wp-content/uploads/2017/08/smart-beauty-shopping-5-800x1233.jpg"
              ,
-             title:"BEAUTY"
+             title:"BEAUTY",
+             cat:"beauty"
         },
         {
         id:5,
         img:"https://media.theeverygirl.com/wp-content/uploads/2022/05/the-everygirl-gallery-home-wishlist.jpg",
-        title:"HOME"
+        title:"HOME",
+        cat:"home"
         }
                     
 

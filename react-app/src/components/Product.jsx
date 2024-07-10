@@ -71,6 +71,7 @@ const Icon = styled.div`
 
 
 const Product = ({item}) => {
+
   return (
     <Container
      initial={{ opacity: 0, scale: 0.7}}
