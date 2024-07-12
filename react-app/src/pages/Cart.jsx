@@ -4,6 +4,7 @@ import Navbar from "../components/navbar"
 import Footer from "../components/Footer"
 import { Add, Remove } from "@mui/icons-material";
 import {mobile} from "../responsive";
+import { useSelector } from "react-redux";
 
 
 const Container=styled.div``;
@@ -152,6 +153,7 @@ const Button=styled.button`
 `;
 // const ProductAmount=styled.div``
 const Cart = () => {
+    const cart = useSelector(state=>state.cart)
   return (
     <Container>
         <Navbar/>
@@ -168,47 +170,28 @@ const Cart = () => {
             </Top>
             <Bottom>
                 <Info>
-                    <Product>
+                    {cart.products.map(product=>(<Product>
                         <ProductDetail>
-                            <Image src="https://shop.mango.com/assets/rcs/pics/static/T6/fotos/S/67001012_TM_B.jpg?imwidth=2048&imdensity=1&ts=1697205807907"/>
+                            <Image src={product.img}/>
                             <Details>
-                                <ProductName><b>Product:</b> ROADSTER STRAIGHT JEANS</ProductName>
-                                <ProductId><b>ID:</b>4567899754</ProductId>
-                                <ProductColor color="lightblue"/>
-                                <ProductSize><b>Size:</b>32</ProductSize>
+                                <ProductName><b>Product:</b> {product.title}</ProductName>
+                                <ProductId><b>ID:</b>{product._id}</ProductId>
+                                <ProductColor color={product.color}/>
+                                <ProductSize><b>Size:</b>{product.size}</ProductSize>
                             </Details>
                         </ProductDetail>
                         <PriceDetail>
                             <ProductAmountContainer>
                                 <Add/>
-                                <ProductAmount>2</ProductAmount>
+                                <ProductAmount>{product.quantity}</ProductAmount>
                                 <Remove/>
                             </ProductAmountContainer>
-                            <ProductPrice>₹ 1000</ProductPrice>
+                            <ProductPrice>₹ {product.price*product.quantity}</ProductPrice>
                             
                         </PriceDetail>
-                    </Product>
+                    </Product>))}
                     <Hr/>
-                    <Product>
-                        <ProductDetail>
-                            <Image src="https://contents.mediadecathlon.com/p2155510/2d4c941c14f1be10172d8977107329a6/p2155510.jpg"/>
-                            <Details>
-                                <ProductName><b>Product:</b>RUN ACTIVE Lightweight Cushioned Men Running Shoes  </ProductName>
-                                <ProductId><b>ID:</b>456899754</ProductId>
-                                <ProductColor color="black"/>
-                                <ProductSize><b>Size:</b>UK7</ProductSize>
-                            </Details>
-                        </ProductDetail>
-                        <PriceDetail>
-                            <ProductAmountContainer>
-                                <Add/>
-                                <ProductAmount>2</ProductAmount>
-                                <Remove/>
-                            </ProductAmountContainer>
-                            <ProductPrice>₹ 989</ProductPrice>
-                            
-                        </PriceDetail>
-                    </Product>
+                    
                 </Info>
                 <Summary>
                     <SummaryTitle>
@@ -216,7 +199,7 @@ const Cart = () => {
                     </SummaryTitle>
                     <SummaryItem>
                         <SummaryItemText>Subtotal</SummaryItemText>
-                        <SummaryItemPrice>₹ 1989</SummaryItemPrice>
+                        <SummaryItemPrice>₹ {cart.total}</SummaryItemPrice>
                     </SummaryItem>
                     <SummaryItem>
                         <SummaryItemText>estimated shipping</SummaryItemText>
@@ -228,7 +211,7 @@ const Cart = () => {
                     </SummaryItem>
                     <SummaryItem type="total">
                         <SummaryItemText >Total</SummaryItemText>
-                        <SummaryItemPrice>₹ 1989</SummaryItemPrice>
+                        <SummaryItemPrice>₹ {cart.total}</SummaryItemPrice>
                     </SummaryItem>
                 <Button>CHECKOUT NOW</Button>
                 </Summary>

@@ -47,7 +47,7 @@ const ProductList = () => {
 const handleFilters=(e)=>{
     const value=e.target.value;
     setFilters({
-        ...filter, // to add the filters not only one 
+        ...filters, // to add the filters not only one 
         [e.target.name]:value,
     });
 };
@@ -56,7 +56,7 @@ const handleFilters=(e)=>{
     <Container>
         <Navbar/>
         <Announcement/>
-        <Title>Dresses</Title>
+        <Title>{cat}</Title>
          <FilterContainer>
             <Filter><FilterText></FilterText>Filter Products:
             <Select name="color" onChange={handleFilters}>

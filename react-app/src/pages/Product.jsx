@@ -1,11 +1,17 @@
 
+import { Add, Remove } from "@mui/icons-material"
+import { useLocation } from "react-router-dom"
 import styled from "styled-components"
-import Newsletter from "../components/Newsletter"
+import Announcement from "../components/Announcement"
 import Footer from "../components/Footer"
 import Navbar from "../components/navbar"
-import Announcement from "../components/Announcement"
-import { Add, Remove } from "@mui/icons-material"
-import {mobile} from "../responsive";
+import Newsletter from "../components/Newsletter"
+import { mobile } from "../responsive"
+import { useEffect, useState } from "react"
+import { publicRequest } from "../requestMethods"
+import { addProduct } from "../redux/cartRedux";
+import { useDispatch } from "react-redux";
+
 const Container=styled.div``
 
 const Wrapper=styled.div`
@@ -125,46 +131,96 @@ const Amount=styled.span`
 
 
 const Product = () => {
+    const location = useLocation();
+    const id = location.pathname.split("/")[2];
+
+    const [product, setProduct] = useState({});
+    const [loading, setLoading] = useState(true);
+    const [quantity, setQuantity] = useState(1);
+    const [color, setColor] = useState("");
+    const [size, setSize] = useState("");
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        const getProduct = async () => {
+            try {
+                const res = await publicRequest.get("/products/find/" + id);
+                console.log("Product data:", res.data);
+                setProduct(res.data);
+                setLoading(false);
+            } catch (err) {
+                console.log(err);
+                setLoading(false);
+            }
+        };
+        getProduct();
+    }, [id]);
+
+    if (loading) {
+        return <div>Loading...</div>; // Show a loading state until data is fetched
+    }
+
+    const handleQuantity=(type)=>{
+        if(type==="inc"){
+            setQuantity(quantity+1);
+            }else{
+                quantity>1 && setQuantity(quantity-1);
+             }
+    }
+
+    const handleClick=()=>{
+        //update our cart
+        dispatch(addProduct({...product , quantity, color, size}));
+
+    }
+
+
   return (
     <Container>
         <Navbar/>
         <Announcement/>
         <Wrapper>
             <ImgContainer>
-                <Image src="https://i.ibb.co/S6qMxwr/jean.jpg"/>
+                <Image src={product.img} />
             </ImgContainer>
             <InfoContainer>
                 <Title
-                >Denim Jumpsuit</Title>
-                <Desc>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum eveniet quasi voluptas quia cumque corrupti mollitia qui magnam dolorem necessitatibus.</Desc>
-                <Price>₹ 840</Price>
+                >{product.title}</Title>
+                <Desc>{product.desc}</Desc>
+                <Price>₹{product.price}</Price>
                 <FilterContainer>
                     <Filter>
                         <FilterTitle>Color</FilterTitle>
-                        <FilterColor color="black"/>
-                        <FilterColor color="darkblue"/>
-                        <FilterColor color="grey"/>
+                        {product.color?.map(c=>{
+                            return (
+                            <FilterColor 
+                        key={c} color={c} onClick={()=>setColor(c)}/>
+                        )})}
+                        
+                       
                     </Filter>
                     <Filter>
                         <FilterTitle>Size</FilterTitle>
-                        <FilterSize>
-                            <FilterSizeOption>XS</FilterSizeOption>
-                            <FilterSizeOption>S</FilterSizeOption>
-                            <FilterSizeOption>M</FilterSizeOption>
-                            <FilterSizeOption>L</FilterSizeOption>
-                            <FilterSizeOption>XL</FilterSizeOption>
-                            <FilterSizeOption>XXL</FilterSizeOption>
+                        <FilterSize onChange={(e)=>setSize(e.target.value)}>
+                            {product.size?.map(s=>(
+                            <FilterSizeOption key={s}>{s}</FilterSizeOption>
+                        ))}
                         </FilterSize>
                     </Filter>
 
                 </FilterContainer>
                 <AddContainer>
                     <AmountContainer>
-                        <Remove/>
-                        <Amount>1</Amount>
-                        <Add/>
+                        <Remove onClick={()=>{
+                            handleQuantity("dec");
+                        }}
+                            />
+                        <Amount>{quantity}</Amount>
+                        <Add onClick={()=>{
+                            handleQuantity("inc");
+                        }}/>
                     </AmountContainer>
-                    <Button>ADD TO CART</Button>
+                    <Button onClick={handleClick}>ADD TO CART</Button>
                 </AddContainer>
             </InfoContainer>
         </Wrapper>
